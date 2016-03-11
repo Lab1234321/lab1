@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 
 public class Main {
 	public static void main(String[] args) {
+		// 解析订单字符串
 		String[] disArr = new String[args.length];
 		for (int j = 0; j < args.length; j++) {
 			disArr[j] = args[j].toLowerCase();
@@ -27,13 +28,12 @@ public class Main {
 			beveStr = disArr[0];
 		}
 
+		// 生成饮料
 		Beverage order;
 		if (beveStr.equals("espresso")) {
-			order = new CoffeeBeverage();
 			order = new Espresso();
 			((CoffeeBeverage) order).setSize(disArr[i]);
 		} else if (beveStr.equals("houseblend")) {
-			order = new CoffeeBeverage();
 			order = new HouseBlend();
 			((CoffeeBeverage) order).setSize(disArr[i]);
 		} else if (beveStr.equals("mocha")) {
