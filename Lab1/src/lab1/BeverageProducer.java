@@ -4,6 +4,9 @@ package lab1;
  * Created by Joker on 3/11/16.
  */
 public class BeverageProducer {
+    // 提供size名字的信息
+    public static String[] size_label = {"small", "medium", "large", "grant"};
+
     public Beverage produce(String[] orderStr) {
         // 解析size数据
         int i;
