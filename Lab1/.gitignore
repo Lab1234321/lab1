@@ -1,1 +1,7 @@
 /bin/
+
+# configuration files
+.classpath
+.project
+Lab1.iml
+.settings
