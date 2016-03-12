@@ -1,14 +1,8 @@
 package lab1;
 
 public class RedTea extends TeaBeverage {
-	private String description;
-	
 	public RedTea() {
 		description = "Red Tea";
-	}
-	
-	public String getDescription() {
-		return description;
 	}
 
 	public double cost() {

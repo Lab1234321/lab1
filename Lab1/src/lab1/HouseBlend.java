@@ -1,6 +1,6 @@
 package lab1;
 
-public class HouseBlend extends CoffeeBeverage {
+public class HouseBlend extends Beverage {
 	private String description;
 	
 	public HouseBlend() {
