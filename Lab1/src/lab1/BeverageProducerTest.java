@@ -17,18 +17,23 @@ public class BeverageProducerTest {
 
     @Test
     public void testBeverageProducer() {
-        // 再想点测试用例...
+        // 鍐嶆兂鐐规祴璇曠敤渚�...
         String[] test = {
                 "espresso small milk milk",
                 "espresso medium milk milk",
                 "mocha grant whip cream",
-                // 测试用例
+                //the test for new drink and new size
+                "decaf mocha small milk",
+                "decaf mocha grant milk chocolate whip cream"
+                // 娴嬭瘯鐢ㄤ緥
         };
         double[] ans = {
                 2.0,
                 2.3,
                 2.9,
-                // 对应cost
+                1.5,
+                3
+                // 瀵瑰簲cost
         };
         Beverage order;
         for (int i = 0; i < test.length; i++) {

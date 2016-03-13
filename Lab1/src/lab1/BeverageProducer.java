@@ -4,16 +4,16 @@ package lab1;
  * Created by Joker on 3/11/16.
  */
 public class BeverageProducer {
-    // 提供size名字的信息
+    // 鎻愪緵size鍚嶅瓧鐨勪俊鎭�
     public static String[] size_label = {"small", "medium", "large", "grant"};
-    // 提供beverage名字信息
+    // 鎻愪緵beverage鍚嶅瓧淇℃伅
     public static String[] beverage_label = {
             "espresso", "houseblend", "mocha", "latte", "cappuccino", "green tea", "red tea",
-            "white tea", "flower tea", "ginger tea", "tea latte"
+            "white tea", "flower tea", "ginger tea", "tea latte", "decaf mocha"
     };
 
     public Beverage produce(String[] orderStr) {
-        // 解析size数据
+        // 瑙ｆ瀽size鏁版嵁
         int i;
         OK_Size:
         for (i = 0; i < orderStr.length; i++)
@@ -26,7 +26,7 @@ public class BeverageProducer {
             return null;
         }
 
-        // 解析饮料名
+        // 瑙ｆ瀽楗枡鍚�
         String beveStr;
         if (i == 2) {
             beveStr = orderStr[0] + " " + orderStr[1];
@@ -34,7 +34,7 @@ public class BeverageProducer {
             beveStr = orderStr[0];
         }
 
-        // 生成饮料
+        // 鐢熸垚楗枡
         Beverage order = null;
         try {
             switch (beveStr) {
@@ -62,6 +62,14 @@ public class BeverageProducer {
                     ((CoffeeBeverage) order).setSize(orderStr[i]);
                     order = new WhipCream(order);
                     break;
+                
+                // the new drink
+                    case "decaf mocha":
+                	order = new Decaf();
+                	((CoffeeBeverage) order).setSize(orderStr[i]);
+                    order = new Chocolate(order);
+                    break;
+                    
                 // tea
                 case "green tea":
                     order = new GreenTea();
@@ -98,7 +106,7 @@ public class BeverageProducer {
             System.out.println("Recipe Error! Such combination can not be served.");
         }
 
-        // 生成配料
+        // 鐢熸垚閰嶆枡
         for (i++; i < orderStr.length; i++) {
             try {
                 switch (orderStr[i]) {
