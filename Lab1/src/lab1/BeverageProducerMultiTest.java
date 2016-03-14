@@ -36,7 +36,7 @@ public class BeverageProducerMultiTest {
         };
         double cost;
         for (int i = 0; i < test.length; i++) {
-            cost = bp.produce(test[i].toLowerCase().split(" "));
+            cost = bp.produceMulti(test[i].toLowerCase().split(" "));
             Assert.assertEquals(ans[i], cost, 0.09);
         }
     }

@@ -19,7 +19,7 @@ public class Main {
 			BeverageProducerMulti p = new BeverageProducerMulti();
 			DecimalFormat df = new DecimalFormat(".0");
 			System.out.println("The total cost of your order is: "
-					+ df.format(p.produce(disArr) ) );
+					+ df.format(p.produceMulti(disArr) ) );
 		}
 		else // old input
 		{

@@ -4,16 +4,16 @@ package lab1;
  * Created by Joker on 3/11/16.
  */
 public class BeverageProducer {
-    // 鎻愪緵size鍚嶅瓧鐨勪俊鎭�
+    // size names
     public static String[] size_label = {"small", "medium", "large", "grant"};
-    // 鎻愪緵beverage鍚嶅瓧淇℃伅
+    // name of beverage
     public static String[] beverage_label = {
             "espresso", "houseblend", "mocha", "latte", "cappuccino", "green tea", "red tea",
             "white tea", "flower tea", "ginger tea", "tea latte", "decaf mocha"
     };
 
     public Beverage produce(String[] orderStr) {
-        // 瑙ｆ瀽size鏁版嵁
+        // Dissolve size data
         int i;
         OK_Size:
         for (i = 0; i < orderStr.length; i++)
@@ -26,7 +26,7 @@ public class BeverageProducer {
             return null;
         }
 
-        // 瑙ｆ瀽楗枡鍚�
+        // Get the name of the beverage
         String beveStr;
         if (i == 2) {
             beveStr = orderStr[0] + " " + orderStr[1];
@@ -34,7 +34,7 @@ public class BeverageProducer {
             beveStr = orderStr[0];
         }
 
-        // 鐢熸垚楗枡
+        // Generate Beverage
         Beverage order = null;
         try {
             switch (beveStr) {
