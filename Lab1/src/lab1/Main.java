@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 
 public class Main {
 	public static void main(String[] args) {
-		// 解析订单字符串
 		String[] disArr = new String[args.length];
 		for (int j = 0; j < args.length; j++) {
 			disArr[j] = args[j].toLowerCase();

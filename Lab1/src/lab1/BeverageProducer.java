@@ -6,11 +6,6 @@ package lab1;
 public class BeverageProducer {
     // size names
     public static String[] size_label = {"small", "medium", "large", "grant"};
-    // name of beverage
-    public static String[] beverage_label = {
-            "espresso", "houseblend", "mocha", "latte", "cappuccino", "green tea", "red tea",
-            "white tea", "flower tea", "ginger tea", "tea latte", "decaf mocha"
-    };
 
     public Beverage produce(String[] orderStr) {
         // Dissolve size data
@@ -36,38 +31,50 @@ public class BeverageProducer {
 
         // Generate Beverage
         Beverage order = null;
+        boolean isCoffee = false;
         try {
             switch (beveStr) {
                 // coffee
                 case "espresso":
                     order = new Espresso();
                     ((CoffeeBeverage) order).setSize(orderStr[i]);
+                    isCoffee = true;
                     break;
                 case "houseblend":
                     order = new HouseBlend();
                     ((CoffeeBeverage) order).setSize(orderStr[i]);
+                    isCoffee = true;
                     break;
                 case "mocha":
                     order = new Espresso();
                     ((CoffeeBeverage) order).setSize(orderStr[i]);
                     order = new Chocolate(order);
+                    isCoffee = true;
                     break;
                 case "latte":
                     order = new Espresso();
                     ((CoffeeBeverage) order).setSize(orderStr[i]);
                     order = new Milk(order);
+                    isCoffee = true;
                     break;
                 case "cappuccino":
                     order = new Espresso();
                     ((CoffeeBeverage) order).setSize(orderStr[i]);
                     order = new WhipCream(order);
+                    isCoffee = true;
+                    break;
+                case "decaf":
+                    order = new Decaf();
+                    ((CoffeeBeverage) order).setSize(orderStr[i]);
+                    isCoffee = true;
                     break;
                 
                 // the new drink
-                    case "decaf mocha":
-                	order = new Decaf();
-                	((CoffeeBeverage) order).setSize(orderStr[i]);
+                case "decaf mocha":
+                    order = new Decaf();
+                    ((CoffeeBeverage) order).setSize(orderStr[i]);
                     order = new Chocolate(order);
+                    isCoffee = true;
                     break;
                     
                 // tea
@@ -106,35 +113,38 @@ public class BeverageProducer {
             System.out.println("Recipe Error! Such combination can not be served.");
         }
 
-        // 鐢熸垚閰嶆枡
+        // add ingredient and judge if the ingredient matches the beverage
+        boolean isMatch;
         for (i++; i < orderStr.length; i++) {
-            try {
-                switch (orderStr[i]) {
-                    case "chocolate":
-                        order = new Chocolate(order);
-                        break;
-                    case "ginger":
-                        order = new Ginger(order);
-                        break;
-                    case "milk":
-                        order = new Milk(order);
-                        break;
-                    case "jasmine":
-                        order = new Jasmine(order);
-                        break;
-                    case "whip":
-                        i++;
-                        order = new WhipCream(order);
-                        break;
-                    default:
-                        System.out.println("Illegal input: " + orderStr[i]);
-                }
-            } catch (ClassCastException e) {
-                if (order instanceof CoffeeBeverage) {
-                    System.out.println(orderStr[i] + " can`t be added into coffee.");
-                } else if (order instanceof TeaBeverage) {
-                    System.out.println(orderStr[i] + "can`t be added into tea.");
-                }
+            switch (orderStr[i]) {
+                case "chocolate":
+                    order = new Chocolate(order);
+                    isMatch = isCoffee;
+                    break;
+                case "ginger":
+                    order = new Ginger(order);
+                    isMatch = !isCoffee;
+                    break;
+                case "milk":
+                    order = new Milk(order);
+                    isMatch = true;
+                    break;
+                case "jasmine":
+                    order = new Jasmine(order);
+                    isMatch = !isCoffee;
+                    break;
+                case "whip":
+                    i++;
+                    order = new WhipCream(order);
+                    isMatch = isCoffee;
+                    break;
+                default:
+                    System.out.println("Illegal input: " + orderStr[i]);
+                    return null;
+            }
+            if (!isMatch) {
+                System.out.println("Illegal ingredient: " + orderStr[i] + " to " + (isCoffee ? "coffee." : "tea."));
+                return null;
             }
         }
 
