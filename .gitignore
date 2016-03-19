@@ -19,5 +19,4 @@ hs_err_pid*
 *.doc
 *.docx
 
-#out files
-.out/
+Lab1/test/
