@@ -13,3 +13,11 @@ hs_err_pid*
 
 # IntelliJ configuration file
 .idea
+*.iml
+
+#document
+*.doc
+*.docx
+
+#out files
+.out/
