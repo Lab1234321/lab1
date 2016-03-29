@@ -148,6 +148,7 @@ public class BeverageProducer {
             }
         }
 
+		System.out.println(order.getDescription());
         return order;
     }
 }

@@ -1,7 +1,6 @@
 package lab1;
 
 public class CoffeeBased implements SizeFactor {
-	// 提供对应size价格
 	public static double[] size_price = {0.4, 0.7, 1, 1.3};
 
 	@Override

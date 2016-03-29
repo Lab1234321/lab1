@@ -10,7 +10,7 @@ public class TeaBased implements SizeFactor {
 				return size_price[i];
 			}
 		}
-		// 默认返回small的price
+		// return the price of small by default
 		return size_price[0];
 	}
 

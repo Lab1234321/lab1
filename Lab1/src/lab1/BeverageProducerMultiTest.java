@@ -17,12 +17,10 @@ public class BeverageProducerMultiTest {
 
     @Test
     public void testBeverageProducerMulti() {
-        // 鍐嶆兂鐐规祴璇曠敤渚�...
         String[] test = {
                 "3 espresso small milk milk ; espresso medium milk milk ; mocha grant whip cream",
                 "2 espresso medium milk milk ; mocha grant whip cream",
                 "2 Mocha small milk milk ; White Tea large Ginger",
-                
                 //the test for new drink and new size 
                 "2 Decaf Mocha grant milk chocolate whip cream ; mocha grant whip cream"
                 // test cases
